@@ -54,7 +54,7 @@
         <junit.version>4.8.2</junit.version>
         <mockito.version>1.8.5</mockito.version>
         <dashboard.view.version>2.0</dashboard.view.version>
-	<jenkins.version>2.30</jenkins.version>
+	<jenkins.version>2.19.3</jenkins.version>
     </properties>
 
  
@@ -221,6 +221,26 @@
                     </execution>
                 </executions>
             </plugin>
+                                   <plugin>
+  <groupId>org.codehaus.mojo</groupId>
+  <artifactId>build-helper-maven-plugin</artifactId>
+  <version>1.7</version>
+  <executions>
+    <execution>
+      <id>add-source</id>
+      <phase>generate-sources</phase>
+      <goals>
+        <goal>add-source</goal>
+      </goals>
+      <configuration>
+        <sources>
+          <source>target/generated-sources/xjc</source>
+        </sources>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
+
         </plugins>
     </build>
 </project>

@@ -59,7 +59,7 @@ public class CppcheckWorkspaceFile implements Serializable {
      */
     private transient CppcheckDiffState diffState = null;
 
-    @SuppressFBWarnings("NP_NULL_ON_SOME_PATH")
+//    @SuppressFBWarnings("NP_NULL_ON_SOME_PATH")
     public CppcheckWorkspaceFile(File file) {
         if (file != null)
             this.fileName = file.getAbsolutePath().replace('\\', '/');
