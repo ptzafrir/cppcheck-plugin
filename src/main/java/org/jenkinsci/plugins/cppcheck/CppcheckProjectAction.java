@@ -34,7 +34,7 @@ public class CppcheckProjectAction extends AbstractCppcheckProjectAction {
     }
 
     public Run<?, ?> getLastFinishedBuild() {
-        Run<?, ?> lastBuild = run.getPreviousBuild();
+        Run<?, ?> lastBuild = run;
         while (lastBuild != null && (lastBuild.isBuilding()
                 || lastBuild.getAction(CppcheckBuildAction.class) == null)) {
             lastBuild = lastBuild.getPreviousBuild();
@@ -82,11 +82,9 @@ public class CppcheckProjectAction extends AbstractCppcheckProjectAction {
     }
 
     public Integer getLastResultBuild() {
-        for (Run<?, ?> b = run; b != null; b = b.getPreviousBuiltBuild()) {
-            CppcheckBuildAction r = b.getAction(CppcheckBuildAction.class);
-            if (r != null)
-                return b.getNumber();
-        }
+        Run<?, ?> b = getLastFinishedBuild();
+        if (b != null)
+            return b.getNumber();
         return null;
     }
 
