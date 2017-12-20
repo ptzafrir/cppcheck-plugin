@@ -82,7 +82,7 @@ public class CppcheckProjectAction extends AbstractCppcheckProjectAction {
     }
 
     public Integer getLastResultBuild() {
-        for (Run<?, ?> b = run.getPreviousBuild(); b != null; b = b.getPreviousBuiltBuild()) {
+        for (Run<?, ?> b = run; b != null; b = b.getPreviousBuiltBuild()) {
             CppcheckBuildAction r = b.getAction(CppcheckBuildAction.class);
             if (r != null)
                 return b.getNumber();
